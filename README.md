@@ -19,9 +19,9 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 # PROGRAM sudharsan.s(24009664)
-            ~~~
+           
 urls.py:
-            
+   ~~~         
 URL configuration for sam project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -42,9 +42,9 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]                
-
-
+]                      
+    ~~~        
+~~
 models.py:            
                      
 from django.db import models
@@ -61,8 +61,8 @@ class Book(models.Model):
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ('Book_id', 'Book_name', 'Mobile_no', 'Age', 'Email', 'DoB', 'Book_amount')
-            
-
+  ~~~          
+~~~
 admin.py:
             
 from django.contrib import admin
@@ -193,9 +193,12 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ~~~
+
+
+
+
 
 #OUTPUT:
 ![WhatsApp Image 2024-12-07 at 22 15 37_e0c3835a](https://github.com/user-attachments/assets/285dcd55-afb4-4c86-a14f-f48b72829e35)
