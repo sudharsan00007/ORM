@@ -20,8 +20,7 @@ Execute Django admin and create details for 10 books
 
 # PROGRAM sudharsan.s(24009664)
 urls.py:
-            ```
-    
+            
 URL configuration for sam project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -42,11 +41,11 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]    
-            
+]                
+
 
 models.py:            
-            ```
+            ```         
 from django.db import models
 from django.contrib import admin
 
