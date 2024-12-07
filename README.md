@@ -196,6 +196,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
             ```
 #OUTPUT:
+![WhatsApp Image 2024-12-07 at 22 15 37_e0c3835a](https://github.com/user-attachments/assets/285dcd55-afb4-4c86-a14f-f48b72829e35)
 ![Screenshot 2024-12-07 213808](https://github.com/user-attachments/assets/3595d549-d57b-4649-9907-bdd0adf1fea9)
 ![Screenshot 2024-12-07 215112](https://github.com/user-attachments/assets/63534b56-a1fa-455d-9540-707c626028f9)
 ![Screenshot 2024-12-07 205036](https://github.com/user-attachments/assets/261a6235-06a2-4250-b86b-13c17ce826b7)
