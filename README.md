@@ -19,152 +19,10 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 # PROGRAM sudharsan.s(24009664)
+urls.py:
             ```
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filament Power Calculator</title>
-    <!-- Include Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .card {
-            width: 100%;
-            max-width: 500px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            background: #fff;
-        }
-        .card-header {
-            background-color: #4e73df;
-            color: #fff;
-            border-radius: 20px 20px 0 0;
-            text-align: center;
-            padding: 1.5rem;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 500;
-        }
-        .formula {
-            text-align: center;
-            font-family: 'Oswald', sans-serif;
-            color: #4e73df;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-        .form-control {
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-        .btn {
-            background-color: #4e73df;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            padding: 10px 15px;
-        }
-        .btn:hover {
-            background-color: #3751c9;
-        }
-        .result {
-            margin-top: 20px;
-            text-align: center;
-            color: #28a745;
-            font-weight: 600;
-        }
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="card-header">
-            Filament Power Calculator
-        </div>
-        <div class="card-body p-4">
-            <div class="formula">
-                Power = V² / R
-            </div>
-            <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="voltage" class="form-label">Voltage (V):</label>
-                    <input type="text" id="voltage" name="voltage" class="form-control" placeholder="Enter voltage in volts" required>
-                </div>
-                <div class="mb-3">
-                    <label for="resistance" class="form-label">Resistance (Ω):</label>
-                    <input type="text" id="resistance" name="resistance" class="form-control" placeholder="Enter resistance in ohms" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Calculate</button>
-            </form>
-            {% if result is not None %}
-                <div class="result mt-4">
-                    <strong>Calculated Power:</strong> {{ result }} W
-                </div>
-            {% endif %}
-        </div>
-    </div>
-    <footer>
-        &copy; 2024 Filament Calculator | Crafted with ❤ and Bootstrap
-    </footer>
-    <!-- Include Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-                ```  
-views.py
-  ```
-from django.shortcuts import render
-
-def index(request):
-    result = None  # To store the calculation result
-    if request.method == 'POST':
-        try:
-            # Retrieve inputs from the POST request
-            voltage = float(request.POST.get('voltage'))
-            resistance = float(request.POST.get('resistance'))
-            
-            # Validate resistance to avoid division by zero
-            if resistance > 0:
-                result = (voltage ** 2) / resistance
-                
-                # Log inputs and outputs to the server console
-                print(f"Input received - Voltage: {voltage}V, Resistance: {resistance}Ω")
-                print(f"Calculated Power: {result}W")
-            else:
-                result = "Resistance must be greater than zero."
-                print("Error: Resistance must be greater than zero.")
-        except ValueError:
-            result = "Invalid input. Please enter numeric values."
-            print("Error: Invalid input. Non-numeric values entered.")
-    else:
-        print("GET request received; no calculation performed.")
     
-    return render(request, 'index.html', {'result': result})
-  ```
-urls.py
-  ```
-"""
-URL configuration for lamp_power project.
+URL configuration for sam project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -181,15 +39,38 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-]
-  ```
-settings.py
-  ```
+]    
+            
+
+models.py:            
+            ```
+from django.db import models
+from django.contrib import admin
+
+class Book(models.Model):
+    Book_id = models.CharField(max_length=20, primary_key=True)
+    Book_name = models.CharField(max_length=100)
+    Mobile_no = models.IntegerField()
+    Age = models.IntegerField()
+    Email = models.EmailField()
+    DoB = models.DateField()
+    Book_amount = models.IntegerField()
+
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('Book_id', 'Book_name', 'Mobile_no', 'Age', 'Email', 'DoB', 'Book_amount')
+            ```
+
+admin.py:
+            ```
+from django.contrib import admin
+from .models import Book, BookAdmin
+admin.site.register(Book, BookAdmin)
+            ```
+settings.py:
+            ```
 """
 Django settings for sam project.
 
@@ -212,7 +93,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-232-^9^p(5-hw-wtue)l^w884c0!15cjvjx!rr!#&+w-s5em%u'
+SECRET_KEY = 'django-insecure-5h)un3o_45@&98ql*w0u-xfnul7t3-j*0rslt2=v*bd=h)*3f6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -314,7 +195,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-```
+            ```
 #OUTPUT:
 ![Screenshot 2024-12-07 213808](https://github.com/user-attachments/assets/3595d549-d57b-4649-9907-bdd0adf1fea9)
 ![Screenshot 2024-12-07 215112](https://github.com/user-attachments/assets/63534b56-a1fa-455d-9540-707c626028f9)
