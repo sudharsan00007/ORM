@@ -19,9 +19,9 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 # PROGRAM sudharsan.s(24009664)
-           
+```        
 urls.py:
-   ~~~         
+      
 URL configuration for sam project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -194,7 +194,7 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-~~~
+```
 
 
 
