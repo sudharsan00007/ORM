@@ -172,6 +172,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ```
 
 
+E-R DIAGRAM:
+
+![E-R DIAGRAM](https://github.com/user-attachments/assets/08ae8b09-3292-4893-b903-67635591b88e)
+
 
 
 
